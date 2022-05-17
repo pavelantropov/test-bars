@@ -42,20 +42,17 @@ public class ContractRepository : IRepository<Contract>
     public Contract? Get(int id) =>
         Items.Find(c => c.Id == id);
 
-    public IEnumerable<Contract> Find(Func<Contract, bool> predicate) =>
-        Items.Where(predicate);
-
     public void Add(Contract item)
     {
         throw new NotImplementedException();
     }
 
-    public void Remove(Contract item)
+    public void Update(Contract updatedItem, int id)
     {
         throw new NotImplementedException();
     }
 
-    public void Update(Contract updatedItem, int id)
+    public void Remove(int id)
     {
         throw new NotImplementedException();
     }
