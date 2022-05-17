@@ -1,0 +1,18 @@
+DROP TABLE IF EXISTS Contracts
+
+CREATE TABLE Contracts (
+    Id INT PRIMARY KEY IDENTITY,
+    CreatedOn DATE,
+    [Index] VARCHAR(MAX),
+    UpdatedOn DATE,
+)
+
+INSERT INTO Contracts
+VALUES 
+('20220101', '2022-1', '20220308'), 
+('20220201', '2022-2', '20220215'), 
+('20220301', '2022-3', '20220301'),
+('20220401', '2022-4', '20220402'), 
+('20220501', '2022-5', '20220517')
+
+SELECT * FROM Contracts

@@ -27,7 +27,7 @@ public class ContractRepository : IRepository<Contract>
                     {
                         Id = (int)rdr[nameof(Contract.Id)],
                         CreatedOn = (DateTime)rdr[nameof(Contract.CreatedOn)],
-                        Index = (int)rdr[nameof(Contract.Index)],
+                        Index = (string)rdr[nameof(Contract.Index)],
                         UpdatedOn = (DateTime)rdr[nameof(Contract.UpdatedOn)],
                     };
 

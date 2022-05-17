@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConnectionString" xml:space="preserve">
-    <value>todo</value>
+    <value>Data Source=(local);Initial Catalog=TaskBarsDb;Integrated Security=true</value>
   </data>
   <data name="SelectContracts" xml:space="preserve">
-    <value>SELECT * FROM contracts</value>
+    <value>SELECT * FROM dbo.Contracts</value>
   </data>
 </root>

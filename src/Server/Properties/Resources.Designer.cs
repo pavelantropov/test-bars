@@ -61,7 +61,7 @@ namespace Server.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to todo.
+        ///   Looks up a localized string similar to Data Source=(local);Initial Catalog=TaskBarsDb;Integrated Security=true.
         /// </summary>
         internal static string ConnectionString {
             get {
@@ -70,7 +70,7 @@ namespace Server.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM contracts.
+        ///   Looks up a localized string similar to SELECT * FROM dbo.Contracts.
         /// </summary>
         internal static string SelectContracts {
             get {
