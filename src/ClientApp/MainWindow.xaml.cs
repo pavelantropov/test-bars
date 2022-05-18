@@ -2,7 +2,6 @@
 using System;
 using DevExpress.Xpf.Grid;
 
-
 namespace ClientApp
 {
     /// <summary>
@@ -19,7 +18,7 @@ namespace ClientApp
             if (!e.IsGetData) return;
 
             var updatedOn = Convert.ToDateTime(e.GetListSourceFieldValue("UpdatedOn"));
-            e.Value = (DateTime.UtcNow - updatedOn).Days < 30;
+            e.Value = (DateTime.UtcNow - updatedOn).Days < 60;
         }
     }
 }

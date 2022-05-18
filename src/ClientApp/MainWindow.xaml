@@ -25,22 +25,22 @@
                                ValidateRowCommand="{Binding ValidateAndSaveCommand}"/>
             </dxg:GridControl.View>
             <dxg:GridColumn FieldName="Id" IsSmart="True" MinWidth="30"/>
-            <dxg:GridColumn Binding="{Binding Index}" FieldName="Номер договора" IsSmart="True" MinWidth="100">
+            <dxg:GridColumn Header="Номер договора" FieldName="Index" IsSmart="True" MinWidth="100">
                 <dxg:GridColumn.EditSettings>
                     <dxe:TextEditSettings/>
                 </dxg:GridColumn.EditSettings>
             </dxg:GridColumn>
-            <dxg:GridColumn Binding="{Binding CreatedOn}" FieldName="Заключен" IsSmart="True" MinWidth="150">
+            <dxg:GridColumn Header="Заключен" FieldName="CreatedOn" IsSmart="True" MinWidth="150">
                 <dxg:GridColumn.EditSettings>
                     <dxe:DateEditSettings Mask="d MMMM yyyy" MaskType="DateTime" MaskUseAsDisplayFormat="True"/>
                 </dxg:GridColumn.EditSettings>
             </dxg:GridColumn>
-            <dxg:GridColumn Binding="{Binding UpdatedOn}" FieldName="Актуален" IsSmart="True" MinWidth="150">
+            <dxg:GridColumn Header="Актуализирован" FieldName="UpdatedOn" IsSmart="True" MinWidth="150">
                 <dxg:GridColumn.EditSettings>
                     <dxe:DateEditSettings Mask="d MMMM yyyy" MaskType="DateTime" MaskUseAsDisplayFormat="True"/>
                 </dxg:GridColumn.EditSettings>
             </dxg:GridColumn>
-            <dxg:GridColumn FieldName="Актуально" UnboundType="Boolean">
+            <dxg:GridColumn Header="Актуален" FieldName="IsValid"  UnboundType="Boolean">
                 <dxg:GridColumn.EditSettings>
                     <dxe:CheckEditSettings/>
                 </dxg:GridColumn.EditSettings>
