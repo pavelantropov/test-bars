@@ -12,15 +12,13 @@ namespace ClientApp.Models
             _contract = contract;
         }
 
-        public Contract Contract => _contract;
-
         public int Id => _contract.Id;
 
         public string Index => _contract.Index;
 
-        public string CreatedOn => _contract.CreatedOn?.ToString("dd MMMM yyyy");
+        public string CreatedOn => _contract.CreatedOn?.ToString("d MMMM yyyy");
 
-        public string UpdatedOn => _contract.UpdatedOn?.ToString("dd MMMM yyyy");
+        public string UpdatedOn => _contract.UpdatedOn?.ToString("d MMMM yyyy");
 
         public bool IsValid =>
             (DateTime.UtcNow - _contract.UpdatedOn)?.Days < 30;

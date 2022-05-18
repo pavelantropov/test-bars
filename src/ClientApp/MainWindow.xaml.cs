@@ -24,37 +24,10 @@ namespace ClientApp
             ContractsListView.ItemsSource = _context.Contracts.Select(c => new ContractTableModel(c));
         }
 
-        public void UpdateBtn_Click(object sender, RoutedEventArgs e)
+        public void DevExpressBtn_Click(object sender, RoutedEventArgs e)
         {
-            ContractsListView.ItemsSource = _context.Contracts.Select(c => new ContractTableModel(c));
-        }
-
-        public void CreateBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var createWindow = new CreateWindow { Owner = this };
-            createWindow.Show();
-        }
-
-        public void ChangeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (ContractsListView.SelectedItem == null)
-            {
-                return;
-            }
-
-            var changeWindow = new ChangeWindow { Owner = this };
-            changeWindow.Show();
-        }
-
-        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (ContractsListView.SelectedItem == null)
-            {
-                return;
-            }
-
-            var deleteWindow = new DeleteWindow { Owner = this };
-            deleteWindow.Show();
+            var contractsWindow = new ContractsWindow() { Owner = this };
+            contractsWindow.Show();
         }
     }
 }

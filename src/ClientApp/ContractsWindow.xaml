@@ -1,0 +1,48 @@
+﻿<dx:ThemedWindow
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:viewmodels="clr-namespace:ClientApp.ViewModels"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    x:Class="ClientApp.ContractsWindow"
+    Title="ContractsWindow" Height="320" Width="640"
+    >
+    <dx:ThemedWindow.DataContext>
+        <viewmodels:ContractsViewModel/>
+    </dx:ThemedWindow.DataContext>
+    <Grid>
+
+        <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" 
+                         ItemsSource="{Binding Contracts}">
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True"
+                               BestFitModeOnSourceChange="VisibleRows"
+                               ShowUpdateRowButtons="OnCellEditorOpen"
+                               ValidateRowCommand="{Binding ValidateAndSaveCommand}"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="Id" IsSmart="True" MinWidth="30"/>
+            <dxg:GridColumn FieldName="Index" IsSmart="True" MinWidth="100">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:TextEditSettings/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="CreatedOn" IsSmart="True" MinWidth="150">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:DateEditSettings Mask="d MMMM yyyy" MaskType="DateTime" MaskUseAsDisplayFormat="True"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="UpdatedOn" IsSmart="True" MinWidth="150">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:DateEditSettings Mask="d MMMM yyyy" MaskType="DateTime" MaskUseAsDisplayFormat="True"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="Valid" IsSmart="True">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:CheckEditSettings/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+        </dxg:GridControl>
+
+    </Grid>
+</dx:ThemedWindow>

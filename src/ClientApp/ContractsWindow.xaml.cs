@@ -1,8 +1,8 @@
-﻿using System;
+﻿using DevExpress.Xpf.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,14 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace ClientApp
 {
     /// <summary>
-    /// Interaction logic for DeleteWindow.xaml
+    /// Interaction logic for ContractsWindow.xaml
     /// </summary>
-    public partial class DeleteWindow : Window
+    public partial class ContractsWindow : ThemedWindow
     {
-        public DeleteWindow()
+        public ContractsWindow()
         {
             InitializeComponent();
         }
