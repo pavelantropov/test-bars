@@ -1,33 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Windows;
-using ClientApp.Models;
-using ContractsModel;
+﻿using DevExpress.Xpf.Core;
+using System;
+using DevExpress.Xpf.Grid;
+
 
 namespace ClientApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : ThemedWindow
     {
-        private const string _serviceRoot = "http://localhost:59623/ContractsDataService.svc";
-        private readonly TaskBarsDbEntities _context;
-
         public MainWindow()
         {
             InitializeComponent();
-            
-            _context = new TaskBarsDbEntities(new Uri(_serviceRoot));
-            ContractsListView.ItemsSource = _context.Contracts.Select(c => new ContractTableModel(c));
         }
-
-        public void DevExpressBtn_Click(object sender, RoutedEventArgs e)
+        private void ContractsGrid_CustomUnboundColumnData(object sender, GridColumnDataEventArgs e)
         {
-            var contractsWindow = new ContractsWindow() { Owner = this };
-            contractsWindow.Show();
+            if (!e.IsGetData) return;
+
+            var updatedOn = Convert.ToDateTime(e.GetListSourceFieldValue("UpdatedOn"));
+            e.Value = (DateTime.UtcNow - updatedOn).Days < 30;
         }
     }
 }

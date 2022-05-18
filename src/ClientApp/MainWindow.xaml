@@ -1,40 +1,51 @@
-﻿<Window x:Class="ClientApp.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="320" MinHeight="100" Width="475" MinWidth="475">
-    <Window.Resources>
-        
-    </Window.Resources>
+﻿<dx:ThemedWindow
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:viewmodels="clr-namespace:ClientApp.ViewModels"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    x:Class="ClientApp.MainWindow"
+    Title="MainWindow" Height="320" Width="640"
+    >
+    <dx:ThemedWindow.DataContext>
+        <viewmodels:ContractsViewModel/>
+    </dx:ThemedWindow.DataContext>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        
-        <Button Grid.Row="0" x:Name="DevExpressBtn" Click="DevExpressBtn_Click" Content="Open DevExpress version"
-                Width="180" Height="30" Margin="0 10 0 10"
-                FontSize="13"/>
 
-        <ListView Grid.Row="1" x:Name="ContractsListView" Height="Auto">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Index}" Width="100">
-                        Index
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=CreatedOn}" Width="150">
-                        Created on
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=UpdatedOn}" Width="150">
-                        Updated on
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=IsValid}" Width="50">
-                        Valid
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <dxg:GridControl x:Name="ContractsGrid" 
+                         AutoGenerateColumns="AddNew" 
+                         EnableSmartColumnsGeneration="True" 
+                         ItemsSource="{Binding Contracts}"
+                         CustomUnboundColumnData="ContractsGrid_CustomUnboundColumnData">
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True"
+                               BestFitModeOnSourceChange="VisibleRows"
+                               ShowUpdateRowButtons="OnCellEditorOpen"
+                               ValidateRowCommand="{Binding ValidateAndSaveCommand}"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="Id" IsSmart="True" MinWidth="30"/>
+            <dxg:GridColumn Binding="{Binding Index}" FieldName="Номер договора" IsSmart="True" MinWidth="100">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:TextEditSettings/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn Binding="{Binding CreatedOn}" FieldName="Заключен" IsSmart="True" MinWidth="150">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:DateEditSettings Mask="d MMMM yyyy" MaskType="DateTime" MaskUseAsDisplayFormat="True"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn Binding="{Binding UpdatedOn}" FieldName="Актуален" IsSmart="True" MinWidth="150">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:DateEditSettings Mask="d MMMM yyyy" MaskType="DateTime" MaskUseAsDisplayFormat="True"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="Актуально" UnboundType="Boolean">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:CheckEditSettings/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+        </dxg:GridControl>
+
     </Grid>
-</Window>
+</dx:ThemedWindow>
