@@ -10,6 +10,7 @@ namespace ClientApp.ViewModels
 {
     public class ContractsViewModel : ViewModelBase
     {
+        // TODO: Modify the port number in the following URI as required.
         private const string _serviceRoot = "http://localhost:59623/ContractsDataService.svc";
         private readonly TaskBarsDbEntities _context;
 
