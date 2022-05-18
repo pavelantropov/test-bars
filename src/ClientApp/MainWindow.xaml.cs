@@ -13,19 +13,48 @@ namespace ClientApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private const string _serviceRoot = "http://localhost:59623/ContractsDataService.svc";
+        private readonly TaskBarsDbEntities _context;
+
         public MainWindow()
         {
             InitializeComponent();
+            
+            _context = new TaskBarsDbEntities(new Uri(_serviceRoot));
+            ContractsListView.ItemsSource = _context.Contracts.Select(c => new ContractTableModel(c));
+        }
 
-            const string serviceRoot = "http://localhost:59623/ContractsDataService.svc";
-            var context = new TaskBarsDbEntities(new Uri(serviceRoot));
-            ContractsListView.ItemsSource = context.Contracts.Select(c => new ContractTableModel()
+        public void UpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContractsListView.ItemsSource = _context.Contracts.Select(c => new ContractTableModel(c));
+        }
+
+        public void CreateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var createWindow = new CreateWindow { Owner = this };
+            createWindow.Show();
+        }
+
+        public void ChangeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (ContractsListView.SelectedItem == null)
             {
-                Id = c.Id,
-                Index = c.Index,
-                CreatedOn = c.CreatedOn,
-                UpdatedOn = c.UpdatedOn,
-            });
+                return;
+            }
+
+            var changeWindow = new ChangeWindow { Owner = this };
+            changeWindow.Show();
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (ContractsListView.SelectedItem == null)
+            {
+                return;
+            }
+
+            var deleteWindow = new DeleteWindow { Owner = this };
+            deleteWindow.Show();
         }
     }
 }
