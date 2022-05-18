@@ -5,6 +5,7 @@ using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm.Native;
 using DevExpress.Mvvm.Xpf;
+using DevExpress.Xpf.Grid;
 
 namespace ClientApp.ViewModels
 {

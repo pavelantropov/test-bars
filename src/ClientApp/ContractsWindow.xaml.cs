@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DevExpress.Xpf.Grid;
 
 
 namespace ClientApp
@@ -23,6 +24,13 @@ namespace ClientApp
         public ContractsWindow()
         {
             InitializeComponent();
+        }
+        private void ContractsGrid_CustomUnboundColumnData(object sender, GridColumnDataEventArgs e)
+        {
+            if (!e.IsGetData) return;
+
+            var updatedOn = Convert.ToDateTime(e.GetListSourceFieldValue("UpdatedOn"));
+            e.Value = (DateTime.UtcNow - updatedOn).Days < 30;
         }
     }
 }

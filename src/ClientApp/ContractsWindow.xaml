@@ -13,8 +13,11 @@
     </dx:ThemedWindow.DataContext>
     <Grid>
 
-        <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" 
-                         ItemsSource="{Binding Contracts}">
+        <dxg:GridControl x:Name="ContractsGrid" 
+                         AutoGenerateColumns="AddNew" 
+                         EnableSmartColumnsGeneration="True" 
+                         ItemsSource="{Binding Contracts}"
+                         CustomUnboundColumnData="ContractsGrid_CustomUnboundColumnData">
             <dxg:GridControl.View>
                 <dxg:TableView AutoWidth="True"
                                BestFitModeOnSourceChange="VisibleRows"
@@ -22,22 +25,22 @@
                                ValidateRowCommand="{Binding ValidateAndSaveCommand}"/>
             </dxg:GridControl.View>
             <dxg:GridColumn FieldName="Id" IsSmart="True" MinWidth="30"/>
-            <dxg:GridColumn FieldName="Index" IsSmart="True" MinWidth="100">
+            <dxg:GridColumn Binding="{Binding Index}" FieldName="Номер договора" IsSmart="True" MinWidth="100">
                 <dxg:GridColumn.EditSettings>
                     <dxe:TextEditSettings/>
                 </dxg:GridColumn.EditSettings>
             </dxg:GridColumn>
-            <dxg:GridColumn FieldName="CreatedOn" IsSmart="True" MinWidth="150">
+            <dxg:GridColumn Binding="{Binding CreatedOn}" FieldName="Заключен" IsSmart="True" MinWidth="150">
                 <dxg:GridColumn.EditSettings>
                     <dxe:DateEditSettings Mask="d MMMM yyyy" MaskType="DateTime" MaskUseAsDisplayFormat="True"/>
                 </dxg:GridColumn.EditSettings>
             </dxg:GridColumn>
-            <dxg:GridColumn FieldName="UpdatedOn" IsSmart="True" MinWidth="150">
+            <dxg:GridColumn Binding="{Binding UpdatedOn}" FieldName="Актуален" IsSmart="True" MinWidth="150">
                 <dxg:GridColumn.EditSettings>
                     <dxe:DateEditSettings Mask="d MMMM yyyy" MaskType="DateTime" MaskUseAsDisplayFormat="True"/>
                 </dxg:GridColumn.EditSettings>
             </dxg:GridColumn>
-            <dxg:GridColumn FieldName="Valid" IsSmart="True">
+            <dxg:GridColumn FieldName="Актуально" UnboundType="Boolean">
                 <dxg:GridColumn.EditSettings>
                     <dxe:CheckEditSettings/>
                 </dxg:GridColumn.EditSettings>
